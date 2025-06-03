@@ -97,6 +97,7 @@ I replaced the existing dependency with [new name] for [reason].
 
 To submit, please:
 
-* Create a `.zip` file containing the edited project (do not include `.idea` or `.vscode`)
+* Create a `.zip` file containing the edited project
+  * Make sure to include the `.git` directory but not `.idea` or `.vscode`
 * Remember to include `pull-request.md`
 * Send your `.zip` file to your recruiting point of contact
