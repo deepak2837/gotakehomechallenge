@@ -22,7 +22,9 @@ var (
 )
 
 func TestMain(m *testing.M) {
-	os.Setenv("DB_DSN", "postgres://postgres:password@localhost:5432")
+    if os.Getenv("DB_DSN") == "" {
+        os.Setenv("DB_DSN", "postgres://postgres:password@localhost:5433")
+    }
 
 	conf, _ = configuration.Load()
 
@@ -40,9 +42,9 @@ func TestMain(m *testing.M) {
 		})
 	})
 
-	conf.DB.Exec("TRUNCATE TABLE clients;")
-	conf.DB.Exec("TRUNCATE TABLE client_messages;")
-	conf.DB.Exec("TRUNCATE TABLE client_users;")
+	conf.DB.Exec("TRUNCATE TABLE clients RESTART IDENTITY CASCADE;")
+	conf.DB.Exec("TRUNCATE TABLE client_messages RESTART IDENTITY CASCADE;")
+	conf.DB.Exec("TRUNCATE TABLE client_users RESTART IDENTITY CASCADE;")
 
 	server = httptest.NewServer(r)
 

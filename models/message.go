@@ -7,7 +7,7 @@ import (
 
 type Message struct {
 	ID             int        `db:"id" json:"id"`
-	Created        *time.Time `db:"sent" json:"created"`
+    Created        *time.Time `db:"created" json:"created"`
 	DeletedAt      *time.Time `db:"deleted_at" json:"deletedAt"`
 	DeletedAtOrder int        `db:"deleted_at_order" json:"deletedAtOrder"`
 	UserIDs        IntList    `db:"user_ids" json:"userIDs"`
